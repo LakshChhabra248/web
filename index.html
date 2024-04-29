@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the 'Number' Game </title>
+</head>
+<body>
+    <!-- <script src="script.js"></script> -->
+    <script>
+        alert("Welcome to the 'Guess the Number' Game")
+function guess(n, a){
+    if (n == a){
+
+        return 0
+    }
+    else if (n > a){
+
+        return 1
+    }
+    else if (n < a){
+
+        return -1
+    }
+}
+// Limit of random Number
+var max = 100
+var min = 1
+let n = prompt("Enter the number of Players")
+for (let index = 0; index < n; index++) {
+    alert(`Its the turn of player ${index + 1}`)
+    let r = Math.floor(Math.random() * (max - min) + min)
+    // alert(r)
+    let num = 0
+    let b = prompt("Enter Your Number")
+    let f = guess(b, r)
+    if (f == 0){
+        alert(`Player ${index + 1} guessed it right`)
+        num += 1
+    }
+    else if (f == 1){
+        alert(`Guess a lower Number`)
+        num += 1
+    }
+    else if (f == -1){
+        alert(`Guess a higher Number`)
+        num += 1
+    }
+    while (guess(b, r) != 0) {
+        let c = prompt("Enter Again")
+        let d = guess(c, r)
+        if (d == 0){
+            alert(`Player ${index + 1} guessed it right`)
+            num += 1
+            break
+        }
+        else if (d == 1){
+            alert(`Guess a lower Number`)
+            num += 1
+        }
+        else if (d == -1){
+            alert(`Guess a higher Number`)
+            num += 1
+        }
+    }
+    alert(`Player ${index + 1} took ${num} of atempts to guess the number`)
+    
+}
+
+    </script>
+</body>
+</html>
